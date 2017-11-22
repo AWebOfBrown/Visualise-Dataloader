@@ -5,18 +5,19 @@ import { observer, inject } from "mobx-react";
 import RowOfTabs from "./RowOfTabs";
 import CodeBlock from "./CodeBlock";
 
-const CodeEditorContainer = ({ tabs, activeScriptName }) => {
-  let code = tabs[activeScriptName];
+const CodeEditorContainer = ({ tabs, activeTabName }) => {
+  let activeTab = tabs.find(tab => tab.label === activeTabName);
+
   return (
     <div className={containerStyle}>
-      <RowOfTabs tabs={tabs} activeScriptName={activeScriptName} />
-      <CodeBlock scriptName={activeScriptName} code={code} />
+      <RowOfTabs tabs={tabs} activeTabName={activeTabName} />
+      <CodeBlock code={activeTab.code} />
     </div>
   );
 };
 
 export default inject(stores => ({
-  activeScriptName: stores.UIStore.codeEditorStore.activeScriptName,
+  activeTabName: stores.UIStore.codeEditorStore.activeTabName,
   tabs: stores.UIStore.codeEditorStore.tabs
 }))(observer(CodeEditorContainer));
 

@@ -1,23 +1,19 @@
 import React from "react";
 import { css } from "emotion";
-import Tab from "./Tab";
+import Tab from "../Tab";
 import { observer } from "mobx-react";
 
-const RowOfTabs = ({ tabs, activeScriptName }) => {
-  return (
-    <div className={tabRowStyle}>
-      {Object.keys(tabs).map((tabName, index) => {
-        return (
-          <Tab
-            key={tabName}
-            scriptName={tabName}
-            active={tabName === activeScriptName}
-          />
-        );
-      })}
-    </div>
-  );
-};
+const RowOfTabs = ({ tabs, activeTabName }) => (
+  <div className={tabRowStyle}>
+    {tabs.map((tab, index) => (
+      <Tab
+        key={index}
+        scriptName={tab.label}
+        active={tab.label === activeTabName}
+      />
+    ))}
+  </div>
+);
 
 export default observer(RowOfTabs);
 

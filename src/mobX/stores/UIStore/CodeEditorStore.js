@@ -1,29 +1,39 @@
 import { observable, action, computed } from "mobx";
 import { Main, UserLoader, DataLoader } from "../../../code";
 
-const tabs = {
-  Main,
-  UserLoader,
-  DataLoader
-};
-
 export class CodeEditorStore {
   constructor(rootStore) {
     this.rootStore = rootStore;
-    this.tabs = tabs;
+    this.tabs = [
+      {
+        label: "Main",
+        content: Main
+      },
+      {
+        label: "UserLoader",
+        content: UserLoader
+      },
+      {
+        label: "DataLoader",
+        content: DataLoader
+      }
+    ];
   }
 
-  @observable activeScriptName = "Main";
+  @observable activeTabName = "Main";
+  @action setActiveTabName = scriptName => (this.activeScriptName = scriptName);
+
   @observable highlightedCallSite = { scriptName: null, line: null };
+  @action
+  setHighlightedCallSite = ({ scriptName, line }) =>
+    (this.highlightedCallSite = { scriptName, line });
+
   @observable highlightedCode = { scriptName: null, lines: null };
-  @observable scrollToLine = { scriptName: null, line: null };
-
-  @action setTab = scriptName => (this.activeScriptName = scriptName);
-
   @action
   setHighlightedCode = ({ scriptName, lines }) =>
     (this.highlightedCode = { scriptName, lines });
 
+  @observable scrollToLine = { scriptName: null, line: null };
   @action
   setScrollToLine = ({ scriptName, line }) => {
     if (this.activeScriptName !== scriptName && scriptName) {
@@ -31,10 +41,4 @@ export class CodeEditorStore {
     }
     this.scrollToLine = { scriptName, line };
   };
-
-  @action setActiveScriptName = tab => (this.activeScriptName = tab);
-
-  @action
-  setHighlightedCallSite = ({ scriptName, line }) =>
-    (this.highlightedCallSite = { scriptName, line });
 }
