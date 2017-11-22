@@ -52,5 +52,5 @@ class TabContainer extends React.Component {
 }
 
 export default inject(stores => ({
-  setActiveScriptName: stores.UIStore.codeEditorStore.setActiveScriptName
+  setActiveTabName: stores.UIStore.codeEditorStore.setActiveTabName
 }))(TabContainer);
