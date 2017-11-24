@@ -5629,9 +5629,9 @@ react-markdown@^2.5.0:
     in-publish "^2.0.0"
     prop-types "^15.5.1"
 
-react-mql-manager@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/react-mql-manager/-/react-mql-manager-0.0.4.tgz#0b876ee6aa651a56b47579e016c134a9115b6853"
+react-mql-manager@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/react-mql-manager/-/react-mql-manager-0.0.5.tgz#d6b3399373c3f85570c7ac8c626ebe391b60418d"
   dependencies:
     prop-types "^15.5.10"
 
