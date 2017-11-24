@@ -21,7 +21,7 @@ export class CodeEditorStore {
   }
 
   @observable activeTabName = "Main";
-  @action setActiveTabName = scriptName => (this.activeScriptName = scriptName);
+  @action setActiveTabName = scriptName => (this.activeTabName = scriptName);
 
   @observable highlightedCallSite = { scriptName: null, line: null };
   @action
