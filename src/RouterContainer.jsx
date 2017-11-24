@@ -11,7 +11,7 @@ class RouterContainer extends React.Component {
       deviceTooNarrow: "(max-device-width: 1023px)",
       viewportTooNarrow: "(max-width: 1023px)"
     },
-    debounce: 1000,
+    debounce: 250,
     onChange: mediaQueries => this.props.setMediaQueries(mediaQueries)
   });
 
