@@ -1,5 +1,4 @@
 import React from "react";
-import { css } from "emotion";
 import { Redirect } from "react-router-dom";
 import Modal from "./Modal.jsx";
 
@@ -11,10 +10,10 @@ class ModalContainer extends React.Component {
   toggle = () => this.setState({ redirect: true });
 
   render() {
-    return [
-      <Modal toggle={this.toggle} dontToggle={this.dontToggle} />,
-      this.state.redirect && <Redirect to="/" />
-    ];
+    if (this.state.redirect) {
+      return <Redirect to="/" />;
+    }
+    return <Modal toggle={this.toggle} dontToggle={this.dontToggle} />;
   }
 }
 
