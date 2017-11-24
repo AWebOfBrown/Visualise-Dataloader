@@ -1,7 +1,7 @@
 import React from "react";
 import Animations from "./animations";
 import { observer, inject } from "mobx-react";
-import debounce from "../../../../utils/debounce";
+import debounce from "../../../utils/debounce";
 import Tab from "./Tab";
 
 @observer
@@ -11,7 +11,7 @@ class TabContainer extends React.Component {
   animations = null;
 
   handleClick = debounce(() => {
-    this.props.setActiveScriptName(this.props.scriptName);
+    this.props.setActiveTabName(this.props.scriptName);
   }, 100);
 
   componentDidMount() {
