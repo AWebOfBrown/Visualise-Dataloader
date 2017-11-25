@@ -1,5 +1,6 @@
 import React from "react";
 import { css } from "emotion";
+import provideTooltip from "../TupleTooltip";
 
 const Tuple = ({ id, resolved = false, rejected = false }) => {
   return (
@@ -11,7 +12,7 @@ const Tuple = ({ id, resolved = false, rejected = false }) => {
   );
 };
 
-export default Tuple;
+export default provideTooltip(Tuple);
 
 const el = css`
   background-color: rgb(150, 150, 150);
