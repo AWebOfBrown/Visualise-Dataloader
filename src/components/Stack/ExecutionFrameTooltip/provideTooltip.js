@@ -48,7 +48,7 @@ const contentStyle = css`
     margin-top: 10px;
     margin-bottom: 5px;
     border-bottom: 2px solid #646363;
-    color: yellow;
+    color: #56abff;
   }
 `;
 
