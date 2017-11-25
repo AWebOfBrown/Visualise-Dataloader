@@ -1,6 +1,7 @@
 import React from "react";
 import { css } from "emotion";
 import { observer } from "mobx-react";
+import provideTooltip from "../ExecutionFrameTooltip";
 
 const ExecutionFrame = ({
   onMouseEnter,
@@ -24,7 +25,7 @@ const ExecutionFrame = ({
   );
 };
 
-export default observer(ExecutionFrame);
+export default provideTooltip(observer(ExecutionFrame));
 
 const frameStyle = css`
   cursor: pointer;
