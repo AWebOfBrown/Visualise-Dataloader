@@ -86,7 +86,7 @@ class ExecutionFrameContainer extends React.Component {
   );
 
   render() {
-    let { scriptName, lines, ...rest } = this.props;
+    let { scriptName } = this.props;
     return (
       <ExecutionFrame
         innerRef={this.bindRef}
