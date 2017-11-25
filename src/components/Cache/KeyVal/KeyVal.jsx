@@ -1,6 +1,7 @@
 import React from "react";
 import { css } from "emotion";
 import Animations from "./animations";
+import provideTooltip from "../KeyValTooltip";
 
 class KeyVal extends React.Component {
   animations = null;
@@ -66,4 +67,4 @@ const column = css`
   flex-flow: column nowrap;
 `;
 
-export default KeyVal;
+export default provideTooltip(KeyVal);
