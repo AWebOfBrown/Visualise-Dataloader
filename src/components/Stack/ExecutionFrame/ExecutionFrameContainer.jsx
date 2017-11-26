@@ -36,7 +36,6 @@ class ExecutionFrameContainer extends React.Component {
     this.DOMNode = null;
   }
 
-  @action
   handleClick = debounce(() => {
     this.animations.click(this.props.active);
 
@@ -50,7 +49,6 @@ class ExecutionFrameContainer extends React.Component {
     });
   }, 250);
 
-  @action
   handleContextMenu = e => {
     e.preventDefault();
     this.animations.click(this.props.active);
@@ -68,7 +66,6 @@ class ExecutionFrameContainer extends React.Component {
     }
   };
 
-  @action
   handleMouseEnter = debounce(() => {
     this.props.UIStore.codeEditorStore.setHighlightedCode({
       scriptName: this.props.scriptName,
@@ -76,7 +73,6 @@ class ExecutionFrameContainer extends React.Component {
     });
   }, 100);
 
-  @action
   handleMouseLeave = debounce(
     () =>
       this.props.UIStore.codeEditorStore.setHighlightedCode({
