@@ -17,25 +17,22 @@ class Queue extends React.Component {
     let currentState = global
       ? this.props.globalTasks ? this.props.globalTasks : null
       : this.props.microTasks ? this.props.microTasks : null;
-    //let currentTasks = currentState.tasks ? currentState.tasks : null;
 
     if (currentState) {
-      currentState.tasks.map((task, index) => (
-        <Transition key={task + index} appear timeout={2000}>
-          {mountState => (
-            <MicroTask
-              active={index === currentState.tasks.length - 1}
-              setHoveredFrame={this.props.UIStore.setHoveredFrame}
-              setActiveTab={this.props.UIStore.codeEditorStore.setActiveTab}
-              scriptName={task.scriptName}
-              lines={task.lines}
-              mountState={mountState}
-              animation={currentState.animation}
-              key={task}
-            />
-          )}
-        </Transition>
-      ));
+      return currentState.tasks.map((task, index) => {
+        return (
+          <Transition key={task} appear timeout={{ enter: 2000, exit: 0 }}>
+            {mountState => (
+              <MicroTask
+                active={index === currentState.tasks.length - 1}
+                scriptName={task.scriptName}
+                lines={task.lines}
+                mountState={mountState}
+              />
+            )}
+          </Transition>
+        );
+      });
     }
   };
 
@@ -52,7 +49,6 @@ class Queue extends React.Component {
   }
 }
 
-// FIX THIS
 export default inject(stores => ({
   globalTasks: stores.UIStore.globalTaskQueueStore.currentTasks,
   microTasks: stores.UIStore.microTaskQueueStore.currentTasks
