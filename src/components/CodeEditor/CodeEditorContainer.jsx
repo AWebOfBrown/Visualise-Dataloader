@@ -11,7 +11,7 @@ const CodeEditorContainer = ({ tabs, activeTabName }) => {
   return (
     <div className={containerStyle}>
       <RowOfTabs tabs={tabs} activeTabName={activeTabName} />
-      <CodeBlock code={activeTab.content} />
+      <CodeBlock code={activeTab.content} scriptName={activeTabName} />
     </div>
   );
 };
