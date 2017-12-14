@@ -7,8 +7,7 @@ well as Lee Byron's insightful [source-code walkthrough](https://youtu.be/OQTnXN
 You should read the [DataLoader](https://github.com/facebook/dataloader) ReadMe prior to
 going through this demo.
 
-## Q. Why should you go through my walkthrough?
-### A: When I started this project I did not understand how DataLoader worked internally. This was the case despite reading & watching a number of resources, so I wrote this guide to teach myself.
+## Q. What is the purpose of this walkthrough?
 
 To understand DataLoader, you need a high-level understanding of V8. What I found when working through numerous guides on the event loop, and v8 internals generally, is that almost every guide
 will (as a matter of necessity) have a degree of assumed knowledge. These pieces of assumed knowledge can be the largest barriers standing in the way of understanding the big picture.
@@ -18,8 +17,6 @@ In this tutorial, I try to provide a brief overview of any concept that might ge
  There is of course a degree of assumed knowledge - that of a developer who has use for DataLoader in the first place. You therefore should have some brief experience writing a basic Node app that communicates with a database. Hopefully this does not set the bar too high to understand the following walkthrough.
 
  I hope you enjoy it!
-
-### Note: I've had this guide checked prior to publishing to ensure its accuracy.
 
 ## How to interact with this demo
 * Step through with the arrows in the header.

@@ -6,8 +6,8 @@ event loop. DataLoader is also an easy library to read / learn, and full credit 
  (note: all the DataLoader.js comments were written by them, I didn't add any).     
 
 Regarding the process of building Visualise DataLoader, I've written some thoughts below about the key packages I used
- and why I picked them / challenges I faced. These packages include one I created while writing 
- this project - React-MQL-Manager.
+ and why I picked them / challenges I faced.
+
 
 <ul>
 
@@ -22,6 +22,12 @@ Regarding the process of building Visualise DataLoader, I've written some though
   <li><a href="#MobX%20-%20State%20Management" data-internalLink="true">
     MobX
   </a></li>
+
+  <li>
+    <a href="#React-MQL-Manager" data-internalLink="true">
+    React-MQL-Manager (which I wrote while building this!)
+    </a>
+  </li>
 
   <li><a href="#React-Markdown" data-internalLink="true">React-Markdown</a></li> 
 
@@ -141,53 +147,17 @@ The tricky part when evaluating both tools is that you can compensate for the we
 
 Note: Devtools in MobX are heating up, just as I was wrapping this up some new developments came to light: [MobX Wiretap](https://wiretap.debuggable.io/). Also, the Mobx-Devtools for chrome/firefox plugins now support state tree. If you use GraphQL, see also [gql-to-mobx](https://github.com/mhaagens/gql-to-mobx).
 
-## Sidenote: Apollo-Client / React-Apollo (not used here)
-This is a bit of a tangent, but to elaborate on state management; my preference for handling async state is to use 
-something like Apollo-Client (with GraphQL). This takes care of writing a lot of boilerplate for you, as excellently
-demonstrated here: [Reducing our Redux code with React Apollo - Peggy Rayzis](https://dev-blog.apollodata.com/reducing-our-redux-code-with-react-apollo-5091b9de9c2a). In Peggy' article, she describes
-how React-Apollo (the React integration for Apollo-Client) enabled Major League Soccer to remove 5,000 lines of code, 
-consequently reducing the surface area for bugs and code maintenance cost. Recently, the New York Times chose to convert from
-[Relay to Apollo](https://twitter.com/wonderboymusic/status/928393343108861952), and it was also picked up by retail brand
-[Express - as described on Apollo's Medium blog](https://dev-blog.apollodata.com/changing-the-architecture-of-express-com-23c950d43323)
+# React-MQL-Manager
 
-I've used Apollo-React (React integration for Apollo-Client) / Apollo-GraphQL (server-side with Express)
- on a previous personal project and found it excellent in terms of productivity. Not having to write reducers for
-data returned from async requests, automatic store updates for error / loading states, a declarative abstraction
-for handling optimistic UI updates, and excellent client-side cache management all significantly reduce development 
-time otherwise spent on otherwise very generic concerns. Admittedly some aspects of the client-side portion felt 
-a little rough around the edges, which hopefully is improved with apollo 2.
+Links: [Github](https://github.com/AWebOfBrown/React-MQL-Manager), [Demo](https://codesandbox.io/s/p93xmm0zmm)
 
-# React-MQL-Manager (which I wrote while writing this project)
-There are a number of libraries for React abstracting over window.matchMedia, but most of 
-them missed the mark for me personally.
+I wrote this little package while putting together Visualise DataLoader. 
 
-I wanted something that was:
-* Un-opinionated regarding state management (at least can interface with Redux / MobX and vanilla state).
-* Simple to implement and use, the API for a match-media abstraction should not be complex in any way.
-* Flexible. For example, if I want to use vanilla React and thus context to propoagate the media query matches, I should be able to
-plug in a Provider OR integrate with a generic Provider (e.g. React Broadcast) so I don't have multiple Providers sitting at the top of my 
-component tree. I wanted the option to use render props to pass down media query state from a HOC or to pass down props the conventional way.
-* Logical. I shouldn't have to re-declare a window.matchMedia abstraction everywhere I need the query. Declare them once, access anywhere.
-Also debounce (though trivially implemented) should be built in since event listeners on window events can get spammy.
+Simply put, I wanted to put my queries in one place and access them anywhere in my component tree, and this does that.
+It only listens to changes for each query once, which is different to some similar libs that will create a listener
+everywhere in the tree that you want access to the viewport's size. Debounce is built in, as are a \`Provider\` and
+Higher Order Component / Render Props component  to access the queries when not using a state management solution. 
 
-So I built my own. What I like about my version is that it basically boils down to instantiating a class with three constructor
-arguments: your queries object, optional debounce, and an on-change handler only IF you use a state management lib. Like so:
-\`\`\` 
-  myQueryManager = new MQLManager({
-    queries: {
-      mobile: "(max-width: 719px"), 
-      tablet:"(min-width: 720px) and (max-width: 1079px)", 
-      desktop: "(min-width: 1080px)"
-    }
-    debounce: 2000,
-    onChange: (mediaQueries) => this.props.dispatch(() => ({type: "NEW_MEDIA_MATCH", payload: {...mediaQueries}}))
-\`\`\`
-Let's assume our viewport is currently 480px. onChange will fire as soon as the class is instantiated (probably from one of
-your React classes), 
-The onChange argument is only used if you're using a third party state lib (eg MobX - where you just pass in a setter action, or 
-Redux as depicted). If you just want to use native state, you only import a Provider that internally uses the context API
-to expose your window.matchMedia query matches to any component you wrap with a HOC you import. Simple as simple can be. 
-You can even see it working with Redux, MobX and vanilla React in the CodeSandbox demo I've made. 
 
 # React-Markdown
 Links: [Github](https://github.com/rexxars/react-markdown), [Website](https://rexxars.github.io/react-markdown/)
@@ -231,7 +201,11 @@ I haven't done much animation, and I wanted a quick abstraction with no licensin
   I've used React Router v4 before and it works perfectly for me. It also inspired me to try using render props, which I've used with a custom component that utilises MediaQueryLists to check whether the device or viewport are sufficiently wide.   
 
 # The End
-  That about wraps things up! Many thanks to all the open source library creators / maintainers / contributors etc. that go way beyond this list of packages. 
+  That about wraps things up!
+  If you managed to read through the whole tutorial and this about section, well done!! Please do feel free to say hello
+  over Twitter :). 
+
+  Many thanks to all the open source library creators / maintainers / contributors etc. that go way beyond this list of packages. 
  `;
 
 export default aboutTheProject;

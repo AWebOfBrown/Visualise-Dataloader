@@ -7,15 +7,29 @@ import step5 from "./5";
 import step6 from "./6";
 import step7 from "./7";
 import step8 from "./8";
+import step9 from "./9";
+import step10 from "./10";
+import step11 from "./11";
+import step12 from "./12";
+import step13 from "./13";
+import step14 from "./14";
+import step15 from "./15";
 
 export default {
-  0: step0,
-  1: step1,
-  2: step2,
-  3: step3,
-  4: step4,
-  5: step5,
-  6: step6,
-  7: step7,
-  8: step8
+  step0,
+  step1,
+  step2,
+  step3,
+  step4,
+  step5,
+  step6,
+  step7,
+  step8,
+  step9,
+  step10,
+  step11,
+  step12,
+  step13,
+  step14,
+  step15
 };
