@@ -13,7 +13,7 @@ class ExecutionFrameContainer extends React.Component {
 
   componentDidMount() {
     this.animations = new Animations(this.DOMNode);
-    this.animations.push();
+    this.props.active ? this.animations.push() : this.animations.inactivePush();
   }
 
   bindRef = ref => (this.DOMNode = ref);
