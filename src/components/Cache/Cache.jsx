@@ -105,6 +105,7 @@ const cacheCreationInfo = css`
   justify-content: center;
   padding-bottom: 5px;
   text-align: center;
+  color: white;
 `;
 
 const group = css`
