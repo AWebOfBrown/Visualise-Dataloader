@@ -9,43 +9,6 @@ Regarding the process of building Visualise DataLoader, I've written some though
  and why I picked them / challenges I faced.
 
 
-<ul>
-
-  <li><a href="#React%20/%20Create%20React%20App%20-%20View%20Library%20/%20Boilerplate%20Generator" data-internalLink="true">
-    React / CRA
-  </a></li>
-
-  <li><a href="#Emotion%20-%20CSS-in-JS" data-internalLink="true">
-    Emotion (css-in-js lib)
-  </a></li>
-
-  <li><a href="#MobX%20-%20State%20Management" data-internalLink="true">
-    MobX
-  </a></li>
-
-  <li>
-    <a href="#React-MQL-Manager" data-internalLink="true">
-    React-MQL-Manager (which I wrote while building this!)
-    </a>
-  </li>
-
-  <li><a href="#React-Markdown" data-internalLink="true">React-Markdown</a></li> 
-
-  <li><a href="#React-Syntax-Highlighter" data-internalLink="true">
-    React-Syntax-Highlighter
-  </a></li>  
-
-  <li> <a href="#Anime.js%20&%20React-Transition-Group" data-internalLink="true">
-    Anime.js with React-Transition-Group
-  </a></li>
-
-  <li> <a href="#React-Loadable%20&%20React-Router%20v4" data-internalLink="true">
-    React-Loadable & React-Router v4
-  </a></li>
-
-
-</ul>
-
 # React / Create React App - View Library / Boilerplate Generator
 
 Links: [React Docs](https://reactjs.org/docs/hello-world.html), [CRA Github](https://github.com/facebookincubator/create-react-app) 
