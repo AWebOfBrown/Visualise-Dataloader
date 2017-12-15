@@ -24,14 +24,15 @@ class PromiseQueue extends React.Component {
   render() {
     return (
       <div className={promiseQueueStyle}>
-        <span className={label}> Promise Queue (Array)</span>
+        <div className={label}> Promise Queue (Array)</div>
         <div
           style={{
             display: "flex",
             width: "100%",
             height: "100px",
             justifyContent: "space-around",
-            alignItems: "center"
+            alignItems: "center",
+            backgroundColor: "rgb(61,61,61)"
           }}
         >
           <Bracket>{"["} </Bracket>
@@ -40,7 +41,7 @@ class PromiseQueue extends React.Component {
           </TransitionGroup>
           <Bracket>{"]"}</Bracket>
         </div>
-        <span className={label}>Property set at DataLoader.js line 48</span>
+        <div className={label}>Property set at DataLoader.js line 48</div>
       </div>
     );
   }
@@ -57,10 +58,14 @@ const promiseQueueStyle = css`
   width: 100%;
 `;
 
-const Bracket = styled("span")`font-size: 30px;`;
+const Bracket = styled("span")`
+  color: white;
+  font-size: 30px;
+`;
 
 const label = css`
   color: black;
   margin: 0 auto;
   font-size: 18px;
+  text-align: center;
 `;
