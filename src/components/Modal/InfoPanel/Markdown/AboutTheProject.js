@@ -76,8 +76,7 @@ I ultimately didn't use \`do\` (I think at all) because aesthetically it looks l
 and any extensive conditional logic makes the whole statement span too many lines for my taste. 
 Personally I find this particularly undesireable in functional components, which is where most of my conditional  
 rendering occurs (see Emotion section for why brevity matters to me). In any case, there are other uses for the \`do\` 
-expression (see: [Proposal: "Statements as Expressions" using do - Nicolás Bevacqua]
-(https://ponyfoo.com/articles/proposal-statements-as-expressions-using-do)) so I'm not ruling them out entirely. 
+expression (see: [Proposal: "Statements as Expressions" using do - Nicolás Bevacqua](https://ponyfoo.com/articles/proposal-statements-as-expressions-using-do)) so I'm not ruling them out entirely. 
 
 To touch on decorators; MobX without decorators is certainly possible, but it's less concise and harder to read. Compare:
 

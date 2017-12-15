@@ -8,7 +8,7 @@ export default class CommentaryStore {
 
   @computed
   get commentary() {
-    return commentary[this.rootStore.storyStore.storyProgress];
+    return commentary["step" + this.rootStore.storyStore.storyProgress];
   }
 
   @computed

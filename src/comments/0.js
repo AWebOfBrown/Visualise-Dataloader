@@ -24,7 +24,7 @@ In this tutorial, I try to provide a brief overview of any concept that might ge
 * You can change code tabs by clicking/tapping them. The code is not editable.
 
 * You can click/tap a frame of execution (or task) to be taken to the relevant code tab if it isn't currently active.
-* The code block will scroll when a frame/task is clicked if the relevant function(s) is not currently visible. The relevant function(s) will also blink.
+* The code block will scroll when a frame/task is clicked if the relevant function is not currently visible. The relevant function will also blink.
 
 * You can right click (long press) a frame/task to be taken to it's call-site (except frame 1 - its initiated from the command line), left click to return to it.
 
