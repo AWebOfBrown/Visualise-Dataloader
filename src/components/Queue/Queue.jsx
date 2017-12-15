@@ -21,12 +21,17 @@ class Queue extends React.Component {
     if (currentState) {
       return currentState.tasks.map((task, index) => {
         return (
-          <Transition key={task} appear timeout={{ enter: 2000, exit: 0 }}>
+          <Transition
+            key={task.lines[0] + task.scriptName}
+            appear
+            timeout={{ enter: 2000, exit: 0 }}
+          >
             {mountState => (
               <MicroTask
                 active={index === currentState.tasks.length - 1}
                 scriptName={task.scriptName}
                 lines={task.lines}
+                callSite={task.callSite}
                 mountState={mountState}
               />
             )}
