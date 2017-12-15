@@ -62,4 +62,5 @@ const Bracket = styled("span")`font-size: 30px;`;
 const label = css`
   color: black;
   margin: 0 auto;
+  font-size: 18px;
 `;
