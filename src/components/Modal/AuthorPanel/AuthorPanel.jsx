@@ -54,13 +54,13 @@ const contactBlock = css`
 `;
 
 const panelStyle = css`
-  padding: 0px 25px 0px 25px;
+  padding: 0px 25px 25px 25px;
   color: white;
   font-size: 18px;
   font-weight: 600;
   flex: 1 1 360px;
   height: 100%;
-  background-color: #05356e;
+  background-color: #122740;
   box-shadow: 6px 8px 17px 1px rgba(0, 0, 0, 1);
   overflow-y: scroll;
 `;
