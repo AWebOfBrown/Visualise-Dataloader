@@ -12,11 +12,17 @@ const Header = ({ location }) => {
           <a
             data-size="large"
             className="twitter-share-button"
-            href={`https://twitter.com/intent/tweet?text=Visualise%20DataLoader:%20an%20interactive%20tutorial%20to%20Facebook's%20caching/batching%20utility%20library%20for%20Node.&url=localhost:3000&hashtags=javascript,node&via=awebofbrown`}
-          >
-            Share This
-          </a>
+            href={`https://twitter.com/intent/tweet?text=Visualise%20DataLoader:%20an%20interactive%20tutorial%20to%20Facebook's%20caching/batching%20utility%20library%20for%20Node.js%20(requires%20>1024px%20viewport).&url=localhost:3000&hashtags=javascript,node,graphQL&via=awebofbrown`}
+          />
           <ToggleAbout location={location} />
+        </span>
+        <span className={followStyle}>
+          <a
+            className="twitter-follow-button"
+            href="https://twitter.com/awebofbrown"
+            data-size="large"
+            data-show-count={false}
+          />
         </span>
       </div>
     </div>
@@ -34,6 +40,14 @@ const hideOnSmallDevices = css`
 const title = css`
   font-size: 24px;
   margin-right: 5px;
+`;
+
+const followStyle = css`
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  ${hideOnSmallDevices};
 `;
 
 const twitterStyle = css`
