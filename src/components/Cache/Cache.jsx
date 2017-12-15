@@ -36,7 +36,7 @@ class Cache extends Component {
           <CacheLabel> Cache (ES6 Map)</CacheLabel>
           <div className={column}>
             <RowLabel>
-              <span> Key (ID) </span> <span> Val (Promise Obj) </span>
+              <span> Key (ID) </span> <span> Value </span>
             </RowLabel>
           </div>
         </CacheHeader>
