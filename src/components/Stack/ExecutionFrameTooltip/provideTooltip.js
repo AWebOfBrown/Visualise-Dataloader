@@ -15,7 +15,7 @@ class EFTooltipContent extends React.Component {
         </a>
         <ul>
           <li>Left click (tap on tablet) to jump to code.</li>
-          <li>Right click (hold on tablet) to jump to call-site.</li>
+          <li>Right click (hold on tablet) to jump to caller.</li>
         </ul>
       </div>
     );
