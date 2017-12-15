@@ -28,28 +28,6 @@ const constructArrOfLines = (start, end) => {
   return arr;
 };
 
-const constructCachePromise = ({
-  key,
-  promiseStatus = "pending",
-  promiseValue = "undefined"
-}) => ({
-  key,
-  value: {
-    "[[PromiseStatus]]": promiseStatus,
-    "[[PromiseValue]]": promiseValue
-  }
-});
-
-const constructPromiseQueuePromise = ({
-  key,
-  resolve = null,
-  reject = null
-}) => ({
-  key,
-  resolve,
-  reject
-});
-
 const stackFrames = [
   { scriptName: "Main", lines: constructArrOfLines(1, 30), callSite: null },
   {
@@ -64,19 +42,48 @@ const stackFrames = [
   },
   {
     scriptName: "DataLoader",
-    lines: constructArrOfLines(59, 109),
-    callSite: { scriptName: "Main", line: 18 }
+    lines: [195, 196, 197, 198, 199, 200],
+    callSite: { scriptName: "DataLoader", line: 95 }
   },
   {
     scriptName: "DataLoader",
-    lines: [199, 200, 201, 202, 203, 204],
-    callSite: { scriptName: "DataLoader", line: 95 }
+    lines: constructArrOfLines(207, 225),
+    callSite: { scriptName: "DataLoader", line: 199 }
+  },
+  {
+    scriptName: "DataLoader",
+    lines: constructArrOfLines(227, 291),
+    callSite: { scriptName: "DataLoader", line: 223 }
+  },
+  {
+    scriptName: "Main",
+    lines: [17],
+    callSite: { scriptName: "DataLoader", line: 17 }
+  },
+  {
+    scriptName: "Main",
+    lines: [19],
+    callSite: { scriptName: "DataLoader", line: 19 }
   }
 ];
 
-const microTasks = [{ scriptName: "DataLoader", lines: [203] }];
-
-const globalTasks = [{ scriptName: "Main", lines: constructArrOfLines(1, 30) }];
+const microTasks = [
+  {
+    scriptName: "DataLoader",
+    lines: [199],
+    callSite: { scriptName: "DataLoader", line: 195 }
+  },
+  {
+    scriptName: "Main",
+    lines: [17],
+    callSite: { scriptName: "Main", line: 17 }
+  },
+  {
+    scriptName: "Main",
+    lines: [19],
+    callSite: { scriptName: "Main", line: 19 }
+  }
+];
 
 const story = [
   {
@@ -111,24 +118,25 @@ const story = [
       frames: [stackFrames[0], stackFrames[2]]
     },
     promiseQueue: [{ key: 49 }],
-    cache: [{ key: 49 }].map(key => constructCachePromise(key))
+    cache: [{ key: 49, value: "undefined" }]
   },
   {
     title: "Batching - Pre-requisite Info",
     stackFrames: {
       frames: [stackFrames[0], stackFrames[2]]
     },
-    cache: [{ key: 49 }].map(key => constructCachePromise(key))
+    promiseQueue: [{ key: 49 }],
+    cache: [{ key: 49, value: "undefined" }]
   },
   {
     title: "Batching Explained!",
     stackFrames: {
-      frames: [stackFrames[0], stackFrames[2]]
+      frames: [stackFrames[0], stackFrames[2], stackFrames[3]]
     },
-    cache: [{ key: 49 }].map(key => constructCachePromise(key)),
+    promiseQueue: [{ key: 49 }],
+    cache: [{ key: 49, value: "undefined" }],
     microTaskQueue: {
-      tasks: [microTasks[0]],
-      animation: null
+      tasks: [microTasks[0]]
     }
   },
   {
@@ -136,28 +144,74 @@ const story = [
     stackFrames: {
       frames: [stackFrames[0]]
     },
-    cache: [{ key: 49 }].map(key => constructCachePromise(key))
+    microTaskQueue: {
+      tasks: [microTasks[0]]
+    },
+    promiseQueue: [{ key: 49 }, { key: 47 }],
+    cache: [{ key: 49, value: "undefined" }, { key: 47, value: "undefined" }]
   },
   {
     title: "Enqueing Dispatch of batchLoad()",
     stackFrames: {
-      frames: [stackFrames[0], stackFrames[3]]
+      frames: []
     },
     microTaskQueue: {
       tasks: [microTasks[0]]
     },
-    cache: [{ key: 59 }].map(key => constructCachePromise(key))
+    promiseQueue: [{ key: 49 }, { key: 47 }],
+    cache: [{ key: 49, value: "undefined" }, { key: 47, value: "undefined" }]
   },
   {
-    title: "Executing batchLoad()",
+    title: "dispatchQueue()",
     stackFrames: {
-      frames: [stackFrames[0], stackFrames[2], stackFrames[3]]
+      frames: [stackFrames[4]]
+    },
+    cache: [{ key: 49, value: "undefined" }, { key: 47, value: "undefined" }]
+  },
+  {
+    title: "dispatchQueueBatch()",
+    stackFrames: {
+      frames: [stackFrames[4], stackFrames[5]]
+    },
+    cache: [{ key: 49, value: "undefined" }, { key: 47, value: "undefined" }]
+  },
+  {
+    title: "Return of the Database Call",
+
+    stackFrames: {
+      frames: [stackFrames[4], stackFrames[5]]
+    },
+    cache: [{ key: 49, value: "{...}" }, { key: 47, value: "{...}" }]
+  },
+  {
+    title: "Invitees of our attendees",
+    stackFrames: {
+      frames: []
     },
     microTaskQueue: {
-      tasks: [microTasks[0]]
+      tasks: [microTasks[1], microTasks[2]]
     },
-    cache: [{ key: 49 }, { key: 47 }].map(promise =>
-      constructCachePromise({ key: promise.key })
-    )
+    cache: [{ key: 49, value: "{...}" }, { key: 47, value: "{...}" }]
+  },
+  {
+    title: "Loading key 49 - again",
+    stackFrames: {
+      frames: [stackFrames[6]]
+    },
+    microTaskQueue: {
+      tasks: [microTasks[2]]
+    },
+    cache: [{ key: 49, value: "{...}" }, { key: 47, value: "{...}" }]
+  },
+  {
+    title: "Loading key 83",
+    stackFrames: {
+      frames: [stackFrames[7]]
+    },
+    cache: [
+      { key: 49, value: "{...}" },
+      { key: 47, value: "{...}" },
+      { key: 83, value: "undefined" }
+    ]
   }
 ];
