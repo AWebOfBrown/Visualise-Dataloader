@@ -12,7 +12,7 @@ const Header = ({ location }) => {
           <a
             data-size="large"
             className="twitter-share-button"
-            href={`https://twitter.com/intent/tweet?text=Visualise%20DataLoader:%20an%20interactive%20tutorial%20to%20Facebook's%20caching/batching%20utility%20library%20for%20Node.js%20(requires%20>1024px%20viewport).&url=localhost:3000&hashtags=javascript,node,graphQL&via=awebofbrown`}
+            href={`https://twitter.com/intent/tweet?text=Visualise%20DataLoader:%20an%20interactive%20tutorial%20to%20Facebook's%20caching/batching%20utility%20library%20for%20Node.js%20(requires%20>1024px%20viewport).&url=http%3A%2F%2Fawebofbrown.github.io/visualise-dataloader&hashtags=javascript,node,graphQL&via=awebofbrown`}
           />
           <ToggleAbout location={location} />
         </span>
