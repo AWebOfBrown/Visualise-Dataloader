@@ -2,11 +2,23 @@ import React from "react";
 import Animations from "./animations";
 import MicroTask from "./MicroTask";
 import { action } from "mobx";
+import { observer, inject } from "mobx-react";
 import debounce from "../../../utils/debounce";
+import PropTypes from "prop-types";
 
+@observer
 class MicroTaskContainer extends React.Component {
   DOMNode = null;
   animations = null;
+
+  static propTypes = {
+    setHighlightedCode: PropTypes.func.isRequired,
+    setScrollToLine: PropTypes.func.isRequired,
+    scriptName: PropTypes.string.isRequired,
+    // observable array = obj
+    lines: PropTypes.object.isRequired,
+    active: PropTypes.bool.isRequired
+  };
 
   bindRef = ref => {
     this.DOMNode = ref;
@@ -19,45 +31,46 @@ class MicroTaskContainer extends React.Component {
     }
   }
 
-  performAnimation = animation => {
-    switch (animation) {
-      case "push":
-        this.animations.push();
-        break;
-      case "pop":
-        this.animations.pop();
-        break;
-      default:
-        return null;
-    }
-  };
-
   componentDidMount() {
     this.animations = new Animations(this.DOMNode);
-    this.performAnimation(this.props.animation);
+    this.animations.push();
   }
 
   componentWillUnmount() {
     this.animations = null;
   }
 
-  @action
   handleClick = debounce(() => {
-    this.props.setActiveTab(this.props.scriptName, this.props.lines[0]);
+    this.props.setScrollToLine({
+      scriptName: this.props.scriptName,
+      line: this.props.lines[0]
+    });
   }, 250);
 
-  @action
+  handleContextMenu = e => {
+    e.preventDefault();
+
+    this.props.setHighlightedCallSite({
+      scriptName: this.props.callSite.scriptName,
+      line: this.props.callSite.line
+    });
+
+    this.props.setScrollToLine({
+      scriptName: this.props.callSite.scriptName,
+      line: this.props.callSite.line
+    });
+  };
+
   handleMouseEnter = debounce(() => {
-    this.props.setHoveredFrame({
+    this.props.setHighlightedCode({
       scriptName: this.props.scriptName,
       lines: this.props.lines
     });
   }, 100);
 
-  @action
   handleMouseLeave = debounce(
     () =>
-      this.props.setHoveredFrame({
+      this.props.setHighlightedCode({
         scriptName: null,
         lines: null
       }),
@@ -70,10 +83,15 @@ class MicroTaskContainer extends React.Component {
         onClick={this.handleClick}
         onMouseLeave={this.handleMouseLeave}
         onMouseEnter={this.handleMouseEnter}
+        onContextMenu={this.handleContextMenu}
         innerRef={this.bindRef}
       />
     );
   }
 }
 
-export default MicroTaskContainer;
+export default inject(stores => ({
+  setHighlightedCode: stores.UIStore.codeEditorStore.setHighlightedCode,
+  setHighlightedCallSite: stores.UIStore.codeEditorStore.setHighlightedCallSite,
+  setScrollToLine: stores.UIStore.codeEditorStore.setScrollToLine
+}))(MicroTaskContainer);
