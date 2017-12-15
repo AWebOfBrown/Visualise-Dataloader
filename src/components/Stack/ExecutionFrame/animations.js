@@ -16,6 +16,21 @@ export default class Animations {
     });
   };
 
+  inactivePush = function() {
+    this.timeline = null;
+    this.timeline = anime.timeline();
+
+    this.timeline.add({
+      targets: this.DOMNode,
+      opacity: [0, 0.3],
+      scale: 1,
+      elasticity: 0,
+      duration: 2000,
+      delay: 500,
+      translateY: [55, 0]
+    });
+  };
+
   push = function() {
     // Clear the timeline to accomodate user
     // stepping backwards through the animations
