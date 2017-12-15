@@ -9,10 +9,9 @@ export default class SizeWarningContainer extends React.Component {
 
   static propTypes = {
     deviceTooNarrow: PropTypes.bool.isRequired,
-    viewportTooNarrow: PropTypes.bool.isRequired
+    viewportTooNarrow: PropTypes.bool.isRequired,
+    ignoreWarning: PropTypes.func.isRequired
   };
-
-  ignore = () => this.setState({ ignoreWarning: true });
 
   render() {
     let { viewportTooNarrow, deviceTooNarrow } = this.props;
@@ -21,13 +20,8 @@ export default class SizeWarningContainer extends React.Component {
       ? viewportWarningContent
       : deviceTooNarrow ? deviceWarningContent : null;
 
-    if (
-      (this.props.viewportTooNarrow && !this.state.ignoreWarning) ||
-      this.props.deviceTooNarrow
-    ) {
-      return <SizeWarning ignore={this.ignore} {...warningContent} />;
-    }
-
-    return null;
+    return (
+      <SizeWarning ignore={this.props.ignoreWarning} {...warningContent} />
+    );
   }
 }
