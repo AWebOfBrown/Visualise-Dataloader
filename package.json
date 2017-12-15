@@ -2,7 +2,7 @@
   "name": "visualise-dataloader",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://awebofbrown.github.io/visualise-dataloader",
+  "homepage": "https://awebofbrown.github.io/Visualise-Dataloader/#/",
   "dependencies": {
     "animejs": "^2.0.2",
     "autoprefixer": "7.1.2",
@@ -71,12 +71,8 @@
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
-    ],
-    "setupFiles": [
-      "<rootDir>/config/polyfills.js"
-    ],
+    "collectCoverageFrom": ["src/**/*.{js,jsx}"],
+    "setupFiles": ["<rootDir>/config/polyfills.js"],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.js?(x)",
       "<rootDir>/src/**/?(*.)(spec|test).js?(x)"
@@ -88,30 +84,15 @@
       "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
       "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
     },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
-    ],
+    "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"],
     "moduleNameMapper": {
       "^react-native$": "react-native-web"
     },
-    "moduleFileExtensions": [
-      "web.js",
-      "js",
-      "json",
-      "web.jsx",
-      "jsx",
-      "node"
-    ]
+    "moduleFileExtensions": ["web.js", "js", "json", "web.jsx", "jsx", "node"]
   },
   "babel": {
-    "presets": [
-      "react-app",
-      "stage-0"
-    ],
-    "plugins": [
-      "emotion",
-      "transform-decorators-legacy"
-    ]
+    "presets": ["react-app", "stage-0"],
+    "plugins": ["emotion", "transform-decorators-legacy"]
   },
   "eslintConfig": {
     "extends": "react-app"
