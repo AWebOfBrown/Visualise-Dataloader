@@ -6,15 +6,10 @@ import provideTooltip from "../KeyValTooltip";
 class KeyVal extends React.Component {
   animations = null;
   DOMNode = null;
-  statusSpan = null;
   valueSpan = null;
 
   componentDidMount() {
-    this.animations = new Animations(
-      this.DOMNode,
-      this.statusSpan,
-      this.valueSpan
-    );
+    this.animations = new Animations(this.DOMNode, this.valueSpan);
     this.animations.enter();
   }
 
@@ -25,7 +20,6 @@ class KeyVal extends React.Component {
   }
 
   bindRef = ref => (this.DOMNode = ref);
-  bindStatusSpan = ref => (this.statusSpan = ref);
   bindValueSpan = ref => (this.valueSpan = ref);
 
   render() {
@@ -34,11 +28,8 @@ class KeyVal extends React.Component {
       <div ref={this.bindRef} className={keyValStyle}>
         <span> {JSON.stringify(id)} </span>
         <div className={column}>
-          <span ref={this.bindStatusSpan}>
-            <span>Status: {value["[[PromiseStatus]]"]}</span>
-          </span>
           <span ref={this.bindValueSpan}>
-            <span>Value: {value["[[PromiseValue]]"]}</span>
+            <span>{value}</span>
           </span>
         </div>
       </div>
