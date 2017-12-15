@@ -32,8 +32,7 @@ In this tutorial, I try to provide a brief overview of any concept that might ge
 DataLoader allows you to batch all the queries you'd
 otherwise individually send to your database, occuring across one execution context, into one query.
 
-### If you're unclear on what a 'stack', 'heap', or execution context, read the following:
-[article by Franziska Hinkelmann](https://medium.com/fhinkel/confused-about-stack-and-heap-2cf3e6adb771).
+### If you're unclear on what a 'stack', 'heap', or execution context, read the following: [article by Franziska Hinkelmann](https://medium.com/fhinkel/confused-about-stack-and-heap-2cf3e6adb771).
 
 It also allows
 you to cache these requests meaning that:
