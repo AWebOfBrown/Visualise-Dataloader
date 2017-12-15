@@ -15,7 +15,7 @@ const Tuple = ({ id, resolved = false, rejected = false }) => {
 
 export default provideTooltip(Tuple);
 
-const el = css``;
+const el = css`color: white;`;
 
 const tupleStyle = css`
   display: flex;
