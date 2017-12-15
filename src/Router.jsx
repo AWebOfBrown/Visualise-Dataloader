@@ -2,7 +2,7 @@ import React from "react";
 import styled from "react-emotion";
 import Loadable from "react-loadable";
 
-import { BrowserRouter, Route } from "react-router-dom";
+import { HashRouter, Route } from "react-router-dom";
 import { observer } from "mobx-react";
 
 import Home from "./pages/Home";
@@ -15,7 +15,7 @@ window.onload = LoadableAbout.preload();
 
 const Router = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div>
         <Route
           path="/"
@@ -27,7 +27,7 @@ const Router = () => {
           <Route exact path="/about" component={LoadableAbout} />
         </Row>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
