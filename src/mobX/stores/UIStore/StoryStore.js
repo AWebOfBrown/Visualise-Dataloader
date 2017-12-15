@@ -57,12 +57,12 @@ const stackFrames = [
   {
     scriptName: "Main",
     lines: [17],
-    callSite: { scriptName: "DataLoader", line: 17 }
+    callSite: { scriptName: "Main", line: 17 }
   },
   {
     scriptName: "Main",
     lines: [19],
-    callSite: { scriptName: "DataLoader", line: 19 }
+    callSite: { scriptName: "Main", line: 19 }
   }
 ];
 
