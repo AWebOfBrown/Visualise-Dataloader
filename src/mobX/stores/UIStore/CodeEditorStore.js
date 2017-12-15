@@ -36,8 +36,8 @@ export class CodeEditorStore {
   @observable scrollToLine = { scriptName: null, line: null };
   @action
   setScrollToLine = ({ scriptName, line }) => {
-    if (this.activeScriptName !== scriptName && scriptName) {
-      this.activeScriptName = scriptName;
+    if (this.activeTabName !== scriptName && scriptName) {
+      this.activeTabName = scriptName;
     }
     this.scrollToLine = { scriptName, line };
   };
