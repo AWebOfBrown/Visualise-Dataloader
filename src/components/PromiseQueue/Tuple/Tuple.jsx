@@ -4,25 +4,22 @@ import provideTooltip from "../TupleTooltip";
 
 const Tuple = ({ id, resolved = false, rejected = false }) => {
   return (
-    <div>
-      <span className={el}>{id}</span>
-      <span className={el}> resolve </span>
-      <span className={el}> reject </span>
+    <div className={tupleStyle}>
+      <span className={el}>
+        {" "}
+        {"{"} key: {id}, resolve(), reject() {"},"}
+      </span>
     </div>
   );
 };
 
 export default provideTooltip(Tuple);
 
-const el = css`
-  background-color: rgb(150, 150, 150);
-  color: black;
-  height: 100%;
-  width: 50px;
-`;
+const el = css``;
 
 const tupleStyle = css`
   display: flex;
-  height: 50px;
-  width: 150px;
+  padding: 5px 0px;
+  width: 250px;
+  font-size: 18px;
 `;
