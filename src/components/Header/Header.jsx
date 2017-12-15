@@ -4,6 +4,10 @@ import { NavLink } from "react-router-dom";
 import ToggleAbout from "./ToggleAbout";
 
 const Header = ({ location }) => {
+  let tweetText = encodeURI(
+    `Visualise DataLoader: an interactive tutorial to Facebook's caching/batching utility library for Node.js (requires >1024px viewport).`
+  );
+  let url = encodeURI(`https://awebofbrown.github.io/Visualise-Dataloader/#/`);
   return (
     <div className={style}>
       <div className={interiorContainer}>
@@ -12,8 +16,10 @@ const Header = ({ location }) => {
           <a
             data-size="large"
             className="twitter-share-button"
-            href={`https://twitter.com/intent/tweet?text=Visualise%20DataLoader:%20an%20interactive%20tutorial%20to%20Facebook's%20caching/batching%20utility%20library%20for%20Node.js%20(requires%20>1024px%20viewport).&url=http%3A%2F%2Fawebofbrown.github.io/visualise-dataloader&hashtags=javascript,node,graphQL&via=awebofbrown`}
-          />
+            href={`https://twitter.com/intent/tweet?text=${tweetText}&url=${url}&hashtags=javascript,node,graphQL&via=awebofbrown`}
+          >
+            Tweet
+          </a>
           <ToggleAbout location={location} />
         </span>
         <span className={followStyle}>
@@ -22,7 +28,9 @@ const Header = ({ location }) => {
             href="https://twitter.com/awebofbrown"
             data-size="large"
             data-show-count={false}
-          />
+          >
+            Follow
+          </a>
         </span>
       </div>
     </div>
